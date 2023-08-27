@@ -44,8 +44,7 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-    // validateForm()
-        php_email_form_submit(thisForm, action, formData);
+        validateForm(thisForm, action, formData)
       }
     });
   });
@@ -86,7 +85,7 @@
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
-  function validateForm() {
+  function validateForm(thisForm, action, formData) {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var phone = document.getElementById("phone").value;
@@ -113,11 +112,10 @@
     }
     
     if (errorMessages.length > 0) {
-        var errorMessage = errorMessages.join("\n");
-        document.getElementsByClassName('.loading').classList.remove('d-block');
-        document.getElementsByClassName('.error-message').innerHTML = errorMessage;
-        document.getElementsByClassName('.error-message').classList.add('d-block');
-        return false;
+        var errorMessage = errorMessages.join(", ");
+        displayError(thisForm, errorMessage)
+    } else {
+      php_email_form_submit(thisForm, action, formData);
     }
 }
 
