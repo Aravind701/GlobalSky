@@ -44,27 +44,31 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-        php_email_form_submit(thisForm, action, formData);
+    validateForm()
+        // php_email_form_submit(thisForm, action, formData);
       }
     });
   });
 
   function php_email_form_submit(thisForm, action, formData) {
+    validateForm()
     fetch(action, {
       method: 'POST',
       body: formData,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
-    .then(response => {
-      if( response.ok ) {
-        return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
-    })
+    // .then(response => {
+    //   console.log(response);
+    //   if( response.ok ) {
+    //     return response.text();
+    //   } else {
+    //     throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+    //   }
+    // })
     .then(data => {
+      console.log(data,'ss');
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if (data.ok) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
@@ -82,4 +86,43 @@
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
+  function validateForm() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    var subject = document.getElementById("subject").value;
+    
+    var errorMessages = [];
+    
+    if (name.trim() === "") {
+        errorMessages.push("Name is required");
+    }
+    
+    if (email.trim() === "") {
+        errorMessages.push("Email is required");
+    } else if (!isValidEmail(email)) {
+        errorMessages.push("Invalid email format");
+    }
+    
+    if (phone.trim() === "") {
+        errorMessages.push("Phone is required");
+    }
+    
+    if (subject.trim() === "") {
+        errorMessages.push("Subject is required");
+    }
+    
+    if (errorMessages.length > 0) {
+        var errorMessage = errorMessages.join("\n");
+        document.getElementsByClassName('.loading').classList.remove('d-block');
+        document.getElementsByClassName('.error-message').innerHTML = errorMessage;
+        document.getElementsByClassName('.error-message').classList.add('d-block');
+        return false;
+    }
+}
+
+function isValidEmail(email) {
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
 })();
