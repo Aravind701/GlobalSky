@@ -12,15 +12,15 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: "Amatic SC", sans-serif;
-  --font-secondary: "Inter", sans-serif;
+  --font-default: "Syne", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", 'Syne', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Amatic SC", 'Syne';
+  --font-secondary: "Inter", 'Syne';
 }
 
 /* Colors */
 :root {
   --color-default: #212529;
-  --color-primary: #ce1212;
+  --color-primary: #00B56E;
   --color-secondary: #37373f;
 }
 
@@ -264,7 +264,7 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 55px;
   margin-right: 6px;
 }
 
@@ -750,11 +750,11 @@ section {
 }
 
 .why-us .icon-box i {
-  color: var(--color-primary);
+  color: white;
   margin-bottom: 30px;
   font-size: 32px;
   margin-bottom: 30px;
-  background: rgba(206, 18, 18, 0.1);
+  background: var(--color-primary);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -785,7 +785,7 @@ section {
 # Stats Counter Section
 --------------------------------------------------------------*/
 .stats-counter {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/stats-bg.jpg") center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../global/scrolling-image/Frame-1.png") center center;
   background-size: cover;
   padding: 100px 0;
 }
@@ -1522,7 +1522,7 @@ section {
   background: rgba(4, 4, 4, 0.7);
   padding: 20px;
   color: #fff;
-  border-top: 5px solid #ce1212;
+  border-top: 5px solid #00B56E;
 }
 
 #hero .carousel-content h2 {
@@ -1533,7 +1533,7 @@ section {
 }
 
 #hero .btn-get-started {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", 'Syne';
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -1545,11 +1545,11 @@ section {
   margin: 10px;
   color: #fff;
   animation-delay: 0.8s;
-  border: 2px solid #ce1212;
+  border: 2px solid #00B56E;
 }
 
 #hero .btn-get-started:hover {
-  background: #ce1212;
+  background: #00B56E;
   color: #fff;
   text-decoration: none;
 }
@@ -1619,7 +1619,7 @@ section {
 
 #hero .carousel-indicators li.active {
   opacity: 1;
-  background: #ce1212;
+  background: #00B56E;
 }
 
 @media (min-width: 1024px) {
