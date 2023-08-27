@@ -44,14 +44,14 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-    validateForm()
-        // php_email_form_submit(thisForm, action, formData);
+    // validateForm()
+        php_email_form_submit(thisForm, action, formData);
       }
     });
   });
 
   function php_email_form_submit(thisForm, action, formData) {
-    validateForm()
+    // validateForm()
     fetch(action, {
       method: 'POST',
       body: formData,
